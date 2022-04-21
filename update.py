@@ -21,9 +21,9 @@ if len(sys.argv) < 2:
 replacements = {}
 with open("differences.csv", mode="r") as f:
     for line in f.readlines():
-        *olds, new = line[:-1].split(",")
-        for old in olds:
-            replacements[old] = new
+        classes = line[:-1].split(",")
+        for old in classes[:-1]:
+            replacements[old] = classes[-1]
 
 
 for name in sys.argv[1:]:
