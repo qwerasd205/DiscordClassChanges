@@ -8,6 +8,7 @@ Note: It performs a basic string replace, so any uses of Discord classes
       fairly unique so this should not be an issue.
 """
 
+import os
 import sys
 import traceback
 
@@ -19,7 +20,10 @@ if len(sys.argv) < 2:
     exit(1)
 
 replacements = {}
-with open("differences.csv", mode="r") as f:
+with open(
+    os.path.join(os.path.dirname(os.path.realpath((__file__))), "differences.csv"),
+    mode="r",
+) as f:
     for line in f.readlines():
         classes = line[:-1].split(",")
         for old in classes[:-1]:
